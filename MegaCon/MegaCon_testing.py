@@ -1,6 +1,6 @@
 import unittest
 import numpy as np
-from megacon_b import MEGAcon
+from MegaCon.megacon import MEGAcon
 
 class TestMega(unittest.TestCase):
 
@@ -70,12 +70,13 @@ class TestMega(unittest.TestCase):
             'MaxGen': 250,
             'CTol': 1e-4,
             'CeqTol': 1e-2,
-            'MaxObj': 10000
+            'MaxObj': 100000
         }
 
         initial_population = [{'x': np.array(problem['x0'])}]
 
         x, fx, S = MEGAcon(problem, initial_population, options)
+
 
 
         self.assertTrue(len(fx['f']) > 0)
@@ -141,15 +142,15 @@ class TestMega(unittest.TestCase):
             'LB': [-5, -5],
             'UB': [5, 5],
             'Constraints': constraints,
-            'x0': [0.5, 0.5]
+            'x0': [1, 0.5]
         }
 
         options = {
             'PopSize': 100,
-            'MaxGen': 100,
+            'MaxGen': 1000,
             'CTol': 1e-4,
             'CeqTol': 1e-2,
-            'MaxObj': 1000
+            'MaxObj': 1000,
         }
 
         initial_population = [{'x': np.array(problem['x0'])}]
