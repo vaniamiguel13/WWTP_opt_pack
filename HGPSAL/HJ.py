@@ -65,7 +65,7 @@ def HJ(Problem: Dict[str, Any], x0: Union[List[float], np.ndarray], delta: Union
         if rho > 0:
             x = x_trial
             fx = fx1
-            print(f"Iteration {Problem['Stats']['Iterations']}: Improved to {fx} at {x}")
+            #print(f"Iteration {Problem['Stats']['Iterations']}: Improved to {fx} at {x}")
         else:
             delta = delta * theta
 
@@ -80,7 +80,7 @@ def HJ(Problem: Dict[str, Any], x0: Union[List[float], np.ndarray], delta: Union
         Problem['Stats']['Message'] = 'HJ: Stopping due to step size norm inferior to tolerance'
 
     print(Problem['Stats']['Message'])
-    print(f"Best Objective Value Found: {Problem['Stats']['BestObj']} at {x}")
+    # print(f"Best Objective Value Found: {Problem['Stats']['BestObj']} at {x}")
     Problem['Stats']['Time'] = time.time() - start_time
     RunData = Problem['Stats']
 

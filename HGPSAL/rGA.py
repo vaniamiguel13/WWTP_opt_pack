@@ -79,8 +79,8 @@ def plot_population(Problem: Dict[str, Any], Population: Dict[str, np.ndarray], 
             ax2.plot(Population['x'][:, 0], Population['x'][:, 1], '.', markersize=10)
 
             plt.draw()
-            plt.pause(0.1)
-            plt.close()
+            plt.pause(1)
+            plt.close(fig)
 
 
 def rGA(Problem: Dict[str, Any], InitialPopulation: Union[None, List[Dict[str, Any]]] = None,
@@ -217,6 +217,7 @@ def rGA(Problem: Dict[str, Any], InitialPopulation: Union[None, List[Dict[str, A
                 plt.show()
                 plt.pause(0.1)
                 plt.close()
+        plt.close(fig)
 
     elapsed_time = time.time() - start_time
 
@@ -239,6 +240,7 @@ def rGA(Problem: Dict[str, Any], InitialPopulation: Union[None, List[Dict[str, A
             plt.draw()
             plt.pause(0.1)
             plt.close()
+
 
     return BestChrom, BestChromObj, RunData
 

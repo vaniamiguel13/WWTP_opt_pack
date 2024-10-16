@@ -122,7 +122,7 @@ def HGPSAL(Problem: Dict[str, Any], options: Dict[str, Any], *varargin: Any) -> 
     }
 
     if not Problem.get('Variables'):
-        raise ValueError('HGPSAL_old:nMissing', 'Problem dimension is missing.')
+        raise ValueError('HGPSAL:nMissing', 'Problem dimension is missing.')
 
     if Problem.get('x0') is None:
         Problem['x0'] = []
@@ -130,34 +130,34 @@ def HGPSAL(Problem: Dict[str, Any], options: Dict[str, Any], *varargin: Any) -> 
     x0 = np.array(Problem['x0'])
 
     if Problem.get('LB') is None:
-        raise ValueError('HGPSAL_old:lbMissing', 'Problem lower bounds are missing.')
+        raise ValueError('HGPSAL:lbMissing', 'Problem lower bounds are missing.')
     lb = np.array(Problem['LB'])
 
     if Problem.get('UB') is None:
-        raise ValueError('HGPSAL_old:ubMissing', 'Problem upper bounds are missing.')
+        raise ValueError('HGPSAL:ubMissing', 'Problem upper bounds are missing.')
     ub = np.array(Problem['UB'])
 
     if not Problem.get('ObjFunction'):
-        raise ValueError('HGPSAL_old:ObjMissing', 'Objective function name is missing.')
+        raise ValueError('HGPSAL:ObjMissing', 'Objective function name is missing.')
 
     if not Problem.get('Constraints'):
-        raise ValueError('HGPSAL_old:ConstraintsMissing', 'Function constraints are missing.')
+        raise ValueError('HGPSAL:ConstraintsMissing', 'Function constraints are missing.')
 
     if not options:
         opt = DefaultOpt
         opt['pop_size'] = min(20 * Problem['Variables'], 200)
-        print('HGPSAL_old: rGA population size set to %d\n' % opt["pop_size"])
+        print('HGPSAL: rGA population size set to %d\n' % opt["pop_size"])
         opt["pmut"] = 1 / Problem['Variables']
-        print('HGPSAL_old: rGA mutation probability set to %f\n' % opt["pmut"])
+        print('HGPSAL: rGA mutation probability set to %f\n' % opt["pmut"])
     else:
         opt = {}
         if 'pop_size' not in options:
             options['pop_size'] = min(20 * Problem['Variables'], 200)
-        print('HGPSAL_old: rGA population size set to %d\n' % options["pop_size"])
+        print('HGPSAL: rGA population size set to %d\n' % options["pop_size"])
 
         if 'pmut' not in options:
             options["pmut"] = 1 / Problem['Variables']
-        print('HGPSAL_old: rGA mutation probability set to %f\n' % options["pmut"])
+        print('HGPSAL: rGA mutation probability set to %f\n' % options["pmut"])
 
         for key in DefaultOpt:
             opt[key] = GetOption(key, options, DefaultOpt)
@@ -316,7 +316,7 @@ def HGPSAL(Problem: Dict[str, Any], options: Dict[str, Any], *varargin: Any) -> 
         if max_i <= alg['eta'] * (1 + norma_x) and v <= alg['eta'] * (1 + norma_lambda):
             if (alg['epsilon'] < opt['epsilon_asterisco'] and max_i <= opt['eta_asterisco'] * (1 + norma_x) and
                     v <= opt['eta_asterisco'] * (1 + norma_lambda) and global_search == 0):
-                stats['message'] = 'HGPSAL_old: Tolerance of constraints violations satisfied.'
+                stats['message'] = 'HGPSAL: Tolerance of constraints violations satisfied.'
                 print(stats['message'])
                 break
             else:
@@ -335,7 +335,7 @@ def HGPSAL(Problem: Dict[str, Any], options: Dict[str, Any], *varargin: Any) -> 
         # Check for convergence
         if stats['extit'] > 1:
             if np.abs(fx - prev_fx) < opt['epsilon1'] and np.linalg.norm(x - prev_x) < opt['epsilon2']:
-                stats['message'] = 'HGPSAL_old: Convergence achieved.'
+                stats['message'] = 'HGPSAL: Convergence achieved.'
                 print(stats['message'])
                 break
 
@@ -343,10 +343,10 @@ def HGPSAL(Problem: Dict[str, Any], options: Dict[str, Any], *varargin: Any) -> 
         prev_x = x.copy()
 
     if stats['extit'] > opt['maxet']:
-        stats['message'] = 'HGPSAL_old: Maximum number of external iterations reached.'
+        stats['message'] = 'HGPSAL: Maximum number of external iterations reached.'
         print(stats['message'])
     if stats['objfun'] > opt['max_objfun']:
-        stats['message'] = 'HGPSAL_old: Maximum number objective function evaluations reached.'
+        stats['message'] = 'HGPSAL: Maximum number objective function evaluations reached.'
         print(stats['message'])
 
     elapsed_time = time.time() - start_time
