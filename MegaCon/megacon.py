@@ -1,4 +1,3 @@
-import matplotlib.pyplot as plt
 import numpy as np
 import time
 from typing import Any, Dict, List, Tuple, Union
@@ -24,7 +23,7 @@ def MEGAcon(Problem: Dict[str, Any], InitialPopulation: List[Dict[str, Any]], Op
     print(MEGAVersion)
 
     DefaultOpt = {
-        'MaxObj': 2000, 'MaxGen': 1000, 'PopSize': 40, 'Elite': 0.1, 
+        'MaxObj': 2000, 'MaxGen': 1000, 'PopSize': 40, 'Elite': 0.1,
         'TourSize': 2, 'Pcross': 0.9, 'Icross': 20, 'Pmut': 0.1, 'Imut': 20, 'Sigma': 0.1,
         'CPTolerance': 1.0e-6, 'CPGenTest': 0.01, 'CTol': 1e-2, 'CeqTol': 1e-2, 'NormType': np.inf, 'NormCons': 1, 'Verbosity': 0
     }
@@ -123,17 +122,18 @@ def MEGAcon(Problem: Dict[str, Any], InitialPopulation: List[Dict[str, Any]], Op
     if Problem['Verbose']:
         print('MEGA is running...')
         if np.sum(Population['Feasible']) == 0:
-            print(f'Gen: {Problem["Stats"]["GenCounter"] + 1}  No. points in 1st front= {Problem["Stats"]["N1Front"][0]}  Number of fronts= {Problem["Stats"]["NFronts"][0]}  All points are unfeasible. Best point: {np.linalg.norm(np.maximum(0, Population["c"][0, :]), NormType) + np.linalg.norm(np.abs(Population["ceq"][0, :]), NormType)}')
+            print(
+                f'Gen: {Problem["Stats"]["GenCounter"] + 1}  No. points in 1st front= {Problem["Stats"]["N1Front"][0]}  Number of fronts= {Problem["Stats"]["NFronts"][0]}  All points are unfeasible. Best point: {np.linalg.norm(np.maximum(0, Population["c"][0, :]), NormType) + np.linalg.norm(np.abs(Population["ceq"][0, :]), NormType)}')
         else:
-            print(f'Gen: {Problem["Stats"]["GenCounter"] + 1}  No. points in 1st front= {Problem["Stats"]["N1Front"][0]}  Number of fronts= {Problem["Stats"]["NFronts"][0]}')
-        if Problem['Verbose'] == 2 and Problem['Variables'] == 2 and Problem['Objectives'] == 2:
-            p, pp = draw_illustration(Problem, Population['x'][:, 0], Population['x'][:, 1], Population['f'][:, 0], Population['f'][:, 1], *args)
+            print(
+                f'Gen: {Problem["Stats"]["GenCounter"] + 1}  No. points in 1st front= {Problem["Stats"]["N1Front"][0]}  Number of fronts= {Problem["Stats"]["NFronts"][0]}')
 
     while Problem['Stats']['GenCounter'] < MaxGenerations and Problem['Stats']['ObjFunCounter'] < MaxEvals:
         Problem['Stats']['GenCounter'] += 1
 
         if Elite:
-            pool = int(np.floor(max(eliteinf, min(elitesup, Pop - len(np.where(Population['Rank'][Population['Feasible'] == 1] == 1)[0])))))
+            pool = int(np.floor(max(eliteinf, min(elitesup, Pop - len(
+                np.where(Population['Rank'][Population['Feasible'] == 1] == 1)[0])))))
         else:
             pool = Pop
 
@@ -157,9 +157,13 @@ def MEGAcon(Problem: Dict[str, Any], InitialPopulation: List[Dict[str, Any]], Op
                     maxc[maxc == 0] = 1
                     maxceq = np.abs(np.min(Population['ceq'], axis=0))
                     maxceq[maxceq == 0] = 1
-                    Population['Feasible'][i] = (np.linalg.norm(np.maximum(0, Population['c'][i, :]) / maxc, NormType) <= CTol and np.linalg.norm(np.abs(Population['ceq'][i, :]) / maxceq, NormType) <= CeqTol)
+                    Population['Feasible'][i] = (
+                                np.linalg.norm(np.maximum(0, Population['c'][i, :]) / maxc, NormType) <= CTol and
+                                np.linalg.norm(np.abs(Population['ceq'][i, :]) / maxceq, NormType) <= CeqTol)
                 else:
-                    Population['Feasible'][i] = (np.linalg.norm(np.maximum(0, Population['c'][i, :]), NormType) <= CTol and np.linalg.norm(np.abs(Population['ceq'][i, :]), NormType) <= CeqTol)
+                    Population['Feasible'][i] = (
+                                np.linalg.norm(np.maximum(0, Population['c'][i, :]), NormType) <= CTol and
+                                np.linalg.norm(np.abs(Population['ceq'][i, :]), NormType) <= CeqTol)
 
         Population = RankPopulation(Population, Elite, Sigma, NormType)
 
@@ -178,11 +182,11 @@ def MEGAcon(Problem: Dict[str, Any], InitialPopulation: List[Dict[str, Any]], Op
 
         if Problem['Verbose']:
             if np.sum(Population['Feasible']) == 0:
-                print(f'Gen: {Problem["Stats"]["GenCounter"] + 1}  No. points in 1st front= {Problem["Stats"]["N1Front"][-1]}  Number of fronts= {Problem["Stats"]["NFronts"][-1]}  All points are unfeasible. Best point: {np.linalg.norm(np.maximum(0, Population["c"][0, :]), NormType) + np.linalg.norm(np.abs(Population["ceq"][0, :]), NormType)}')
+                print(
+                    f'Gen: {Problem["Stats"]["GenCounter"] + 1}  No. points in 1st front= {Problem["Stats"]["N1Front"][-1]}  Number of fronts= {Problem["Stats"]["NFronts"][-1]}  All points are unfeasible. Best point: {np.linalg.norm(np.maximum(0, Population["c"][0, :]), NormType) + np.linalg.norm(np.abs(Population["ceq"][0, :]), NormType)}')
             else:
-                print(f'Gen: {Problem["Stats"]["GenCounter"] + 1}  No. points in 1st front= {Problem["Stats"]["N1Front"][-1]}  Number of fronts= {Problem["Stats"]["NFronts"][-1]}')
-            if Problem['Verbose'] == 2 and Problem['Variables'] == 2 and Problem['Objectives'] == 2:
-                update_illustration(p, pp, Problem['Stats']['GenCounter'], Population['x'][:, 0], Population['x'][:, 1], Population['f'][:, 0], Population['f'][:, 1])
+                print(
+                    f'Gen: {Problem["Stats"]["GenCounter"] + 1}  No. points in 1st front= {Problem["Stats"]["N1Front"][-1]}  Number of fronts= {Problem["Stats"]["NFronts"][-1]}')
 
     elapsed_time = time.time() - start_time
     print(f'Elapsed time: {elapsed_time:.2f} seconds')
@@ -207,8 +211,6 @@ def MEGAcon(Problem: Dict[str, Any], InitialPopulation: List[Dict[str, Any]], Op
     FrontPoint['ceq'] = np.array(FrontPoint['ceq'])
 
     if Problem['Verbose']:
-        if Problem['Verbose'] == 2 and Problem['Variables'] == 2 and Problem['Objectives'] == 2:
-            terminate_illustration(p, pp, NonDomPoint[:, 0], NonDomPoint[:, 1], FrontPoint['f'][:, 0], FrontPoint['f'][:, 1], len(NonDomPoint))
         print(Problem['Stats'])
 
     return NonDomPoint, FrontPoint, RunData
@@ -272,31 +274,31 @@ def ConEval(problem: Dict[str, Any], x: np.ndarray, *args: Any) -> Tuple[Dict[st
             - np.ndarray: Equality constraints.
     """
     problem['Stats']['ConCounter'] += 1
-    
+
     try:
         c, ceq = problem['Constraints'](x, *args)
-        
+
         # Ensure c is a numpy array
         if not isinstance(c, np.ndarray):
             c = np.array(c)
-        
+
         # Ensure ceq is a numpy array
         if not isinstance(ceq, np.ndarray):
             ceq = np.array(ceq)
-        
+
         # If c is an empty array, set it to an array with a single zero element
         if c.size == 0:
             c = np.array([0])
-        
+
         # If ceq is an empty array, set it to an array with a single zero element
         if ceq.size == 0:
             ceq = np.array([0])
-    
+
     except Exception as e:
         raise RuntimeError(
             f"Cannot continue because the user-supplied function constraints failed with the following error:\n{e}"
         )
-    
+
     return problem, c, ceq
 
 
@@ -316,7 +318,7 @@ def tournament_selection(chromosomes: Dict[str, np.ndarray], pool_size: int, tou
     P = {'x': np.zeros((pool_size, chromosomes['x'].shape[1]))}
     candidate = np.zeros(tour_size, dtype=int)
     fitness = np.zeros(tour_size)
-    
+
     for i in range(pool_size):
         for j in range(tour_size):
             candidate[j] = np.random.randint(1, pop+1)
@@ -326,7 +328,7 @@ def tournament_selection(chromosomes: Dict[str, np.ndarray], pool_size: int, tou
             fitness[j] = chromosomes['Fitness'][candidate[j]-1]
         min_candidate = np.where(fitness == np.min(fitness))[0]
         P['x'][i, :] = chromosomes['x'][candidate[min_candidate[0]]-1, :]
-    
+
     return P
 
 def genetic_operator(Problem: Dict[str, Any], parent_chromosome: Dict[str, np.ndarray], pc: float, pm: float, mu: float, mum: float) -> Dict[str, np.ndarray]:
@@ -682,7 +684,7 @@ def GetOption(Option: str, Options: Dict[str, Any], DefaultOpt: Dict[str, Any]) 
     if Options is None or not isinstance(Options, dict):
         # User does not provide Options
         return DefaultOpt[Option]
-    
+
     # Try the option provided by user
     try:
         Value = Options[Option]
@@ -695,113 +697,3 @@ def GetOption(Option: str, Options: Dict[str, Any], DefaultOpt: Dict[str, Any]) 
 
     return Value
 
-def draw_illustration(Problem: Dict[str, Any], X: np.ndarray, Y: np.ndarray, F1: np.ndarray, F2: np.ndarray, *args: Any) -> Tuple[Any, Any]:
-    """
-    Draws initial illustrations for the optimization process.
-
-    Args:
-        Problem (dict): A dictionary containing problem-specific parameters and functions.
-        X (np.ndarray): Decision variables X.
-        Y (np.ndarray): Decision variables Y.
-        F1 (np.ndarray): Objective function 1 values.
-        F2 (np.ndarray): Objective function 2 values.
-        *args: Additional arguments.
-
-    Returns:
-        tuple:
-            - Any: Plot handle for decision variables.
-            - Any: Plot handle for objective functions.
-    """
-    plt.close('all')
-    fig = plt.figure(1, figsize=(12, 10))
-
-    xx, yy = np.meshgrid(
-        np.linspace(Problem['LB'][0], Problem['UB'][0], 80),
-        np.linspace(Problem['LB'][1], Problem['UB'][1], 80)
-    )
-    z1 = np.zeros_like(xx)
-    z2 = np.zeros_like(xx)
-    for i in range(xx.shape[0]):
-        for j in range(xx.shape[1]):
-            f = eval(Problem['ObjFunction'])([xx[i, j], yy[i, j]], *args)
-            z1[i, j] = f[0]
-            z2[i, j] = f[1]
-
-    ax1 = fig.add_subplot(2, 2, 1, projection='3d')
-    ax1.plot_surface(xx, yy, z1, alpha=0.7)
-    ax1.plot_surface(xx, yy, z2, alpha=0.7)
-    ax1.set_title('Objective function')
-    ax1.set_xlabel('x')
-    ax1.set_ylabel('y')
-    ax1.set_zlabel('f1(x) and f2(x)')
-
-    ax2 = fig.add_subplot(2, 2, 2)
-    ax2.contour(xx, yy, z1, colors='b')
-    ax2.contour(xx, yy, z2, colors='r')
-    ax2.set_xlabel('x')
-    ax2.set_ylabel('y')
-    ax2.grid(True)
-    p, = ax2.plot(X, Y, 'bo')
-
-    ax3 = fig.add_subplot(2, 2, 3)
-    ax3.plot(z1, z2, 'b.')
-    ax3.set_xlabel('f1(x)')
-    ax3.set_ylabel('f2(x)')
-
-    ax4 = fig.add_subplot(2, 2, 4)
-    ax4.set_title('Population at generation: 0')
-    ax4.set_xlabel('f1(x)')
-    ax4.set_ylabel('f2(x)')
-    ax4.grid(True)
-    pp, = ax4.plot(F1, F2, 'bo')
-
-    plt.draw()
-    plt.pause(0.1)
-
-    return p, pp
-
-def update_illustration(p: Any, pp: Any, gen: int, X: np.ndarray, Y: np.ndarray, F1: np.ndarray, F2: np.ndarray) -> None:
-    """
-    Updates the illustration with new generation data.
-
-    Args:
-        p (Any): Plot handle for decision variables.
-        pp (Any): Plot handle for objective functions.
-        gen (int): Current generation number.
-        X (np.ndarray): Decision variables X.
-        Y (np.ndarray): Decision variables Y.
-        F1 (np.ndarray): Objective function 1 values.
-        F2 (np.ndarray): Objective function 2 values.
-    """
-    plt.suptitle(f'Population at generation: {gen}')
-    p.set_xdata(X)
-    p.set_ydata(Y)
-    p.set_color('b')
-    pp.set_xdata(F1)
-    pp.set_ydata(F2)
-    pp.set_color('b')
-    plt.draw()
-    plt.pause(0.1)
-
-def terminate_illustration(p: Any, pp: Any, X: np.ndarray, Y: np.ndarray, F1: np.ndarray, F2: np.ndarray, ND: int) -> None:
-    """
-    Terminates the illustration with final results.
-
-    Args:
-        p (Any): Plot handle for decision variables.
-        pp (Any): Plot handle for objective functions.
-        X (np.ndarray): Decision variables X.
-        Y (np.ndarray): Decision variables Y.
-        F1 (np.ndarray): Objective function 1 values.
-        F2 (np.ndarray): Objective function 2 values.
-        ND (int): Number of non-dominated solutions.
-    """
-    plt.suptitle(f'Search terminated. Number of nondominated solutions: {ND}')
-    p.set_xdata(X)
-    p.set_ydata(Y)
-    p.set_color('k')
-    pp.set_xdata(F1)
-    pp.set_ydata(F2)
-    pp.set_color('k')
-    plt.draw()
-    plt.pause(0.1)
