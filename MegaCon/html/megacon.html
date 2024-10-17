@@ -1,0 +1,346 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1">
+<meta name="generator" content="pdoc3 0.11.1">
+<title>megacon API documentation</title>
+<meta name="description" content="">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/13.0.0/sanitize.min.css" integrity="sha512-y1dtMcuvtTMJc1yPgEqF0ZjQbhnc/bFhyvIyVNb9Zk5mIGtqVaAB1Ttl28su8AvFMOY0EwRbAe+HCLqj6W7/KA==" crossorigin>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/13.0.0/typography.min.css" integrity="sha512-Y1DYSb995BAfxobCkKepB1BqJJTPrOp3zPL74AWFugHHmmdcvO+C48WLrUOlhGMc0QG7AE3f7gmvvcrmX2fDoA==" crossorigin>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/default.min.css" crossorigin>
+<style>:root{--highlight-color:#fe9}.flex{display:flex !important}body{line-height:1.5em}#content{padding:20px}#sidebar{padding:1.5em;overflow:hidden}#sidebar > *:last-child{margin-bottom:2cm}.http-server-breadcrumbs{font-size:130%;margin:0 0 15px 0}#footer{font-size:.75em;padding:5px 30px;border-top:1px solid #ddd;text-align:right}#footer p{margin:0 0 0 1em;display:inline-block}#footer p:last-child{margin-right:30px}h1,h2,h3,h4,h5{font-weight:300}h1{font-size:2.5em;line-height:1.1em}h2{font-size:1.75em;margin:2em 0 .50em 0}h3{font-size:1.4em;margin:1.6em 0 .7em 0}h4{margin:0;font-size:105%}h1:target,h2:target,h3:target,h4:target,h5:target,h6:target{background:var(--highlight-color);padding:.2em 0}a{color:#058;text-decoration:none;transition:color .2s ease-in-out}a:visited{color:#503}a:hover{color:#b62}.title code{font-weight:bold}h2[id^="header-"]{margin-top:2em}.ident{color:#900;font-weight:bold}pre code{font-size:.8em;line-height:1.4em;padding:1em;display:block}code{background:#f3f3f3;font-family:"DejaVu Sans Mono",monospace;padding:1px 4px;overflow-wrap:break-word}h1 code{background:transparent}pre{border-top:1px solid #ccc;border-bottom:1px solid #ccc;margin:1em 0}#http-server-module-list{display:flex;flex-flow:column}#http-server-module-list div{display:flex}#http-server-module-list dt{min-width:10%}#http-server-module-list p{margin-top:0}.toc ul,#index{list-style-type:none;margin:0;padding:0}#index code{background:transparent}#index h3{border-bottom:1px solid #ddd}#index ul{padding:0}#index h4{margin-top:.6em;font-weight:bold}@media (min-width:200ex){#index .two-column{column-count:2}}@media (min-width:300ex){#index .two-column{column-count:3}}dl{margin-bottom:2em}dl dl:last-child{margin-bottom:4em}dd{margin:0 0 1em 3em}#header-classes + dl > dd{margin-bottom:3em}dd dd{margin-left:2em}dd p{margin:10px 0}.name{background:#eee;font-size:.85em;padding:5px 10px;display:inline-block;min-width:40%}.name:hover{background:#e0e0e0}dt:target .name{background:var(--highlight-color)}.name > span:first-child{white-space:nowrap}.name.class > span:nth-child(2){margin-left:.4em}.inherited{color:#999;border-left:5px solid #eee;padding-left:1em}.inheritance em{font-style:normal;font-weight:bold}.desc h2{font-weight:400;font-size:1.25em}.desc h3{font-size:1em}.desc dt code{background:inherit}.source summary,.git-link-div{color:#666;text-align:right;font-weight:400;font-size:.8em;text-transform:uppercase}.source summary > *{white-space:nowrap;cursor:pointer}.git-link{color:inherit;margin-left:1em}.source pre{max-height:500px;overflow:auto;margin:0}.source pre code{font-size:12px;overflow:visible}.hlist{list-style:none}.hlist li{display:inline}.hlist li:after{content:',\2002'}.hlist li:last-child:after{content:none}.hlist .hlist{display:inline;padding-left:1em}img{max-width:100%}td{padding:0 .5em}.admonition{padding:.1em 1em;margin-bottom:1em}.admonition-title{font-weight:bold}.admonition.note,.admonition.info,.admonition.important{background:#aef}.admonition.todo,.admonition.versionadded,.admonition.tip,.admonition.hint{background:#dfd}.admonition.warning,.admonition.versionchanged,.admonition.deprecated{background:#fd4}.admonition.error,.admonition.danger,.admonition.caution{background:lightpink}</style>
+<style media="screen and (min-width: 700px)">@media screen and (min-width:700px){#sidebar{width:30%;height:100vh;overflow:auto;position:sticky;top:0}#content{width:70%;max-width:100ch;padding:3em 4em;border-left:1px solid #ddd}pre code{font-size:1em}.name{font-size:1em}main{display:flex;flex-direction:row-reverse;justify-content:flex-end}.toc ul ul,#index ul ul{padding-left:1em}.toc > ul > li{margin-top:.5em}}</style>
+<style media="print">@media print{#sidebar h1{page-break-before:always}.source{display:none}}@media print{*{background:transparent !important;color:#000 !important;box-shadow:none !important;text-shadow:none !important}a[href]:after{content:" (" attr(href) ")";font-size:90%}a[href][title]:after{content:none}abbr[title]:after{content:" (" attr(title) ")"}.ir a:after,a[href^="javascript:"]:after,a[href^="#"]:after{content:""}pre,blockquote{border:1px solid #999;page-break-inside:avoid}thead{display:table-header-group}tr,img{page-break-inside:avoid}img{max-width:100% !important}@page{margin:0.5cm}p,h2,h3{orphans:3;widows:3}h1,h2,h3,h4,h5,h6{page-break-after:avoid}}</style>
+<script defer src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js" integrity="sha512-D9gUyxqja7hBtkWpPWGt9wfbfaMGVt9gnyCvYa+jojwwPHLCzUm5i8rpk7vD7wNee9bA35eYIjobYPaQuKS1MQ==" crossorigin></script>
+<script>window.addEventListener('DOMContentLoaded', () => {
+hljs.configure({languages: ['bash', 'css', 'diff', 'graphql', 'ini', 'javascript', 'json', 'plaintext', 'python', 'python-repl', 'rust', 'shell', 'sql', 'typescript', 'xml', 'yaml']});
+hljs.highlightAll();
+})</script>
+</head>
+<body>
+<main>
+<article id="content">
+<header>
+<h1 class="title">Module <code>megacon</code></h1>
+</header>
+<section id="section-intro">
+</section>
+<section>
+</section>
+<section>
+</section>
+<section>
+<h2 class="section-title" id="header-functions">Functions</h2>
+<dl>
+<dt id="megacon.Bounds"><code class="name flex">
+<span>def <span class="ident">Bounds</span></span>(<span>X: numpy.ndarray, L: numpy.ndarray, U: numpy.ndarray) ‑> numpy.ndarray</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Applies bounds to the decision variables.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>X</code></strong> :&ensp;<code>np.ndarray</code></dt>
+<dd>The decision variables.</dd>
+<dt><strong><code>L</code></strong> :&ensp;<code>np.ndarray</code></dt>
+<dd>The lower bounds.</dd>
+<dt><strong><code>U</code></strong> :&ensp;<code>np.ndarray</code></dt>
+<dd>The upper bounds.</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>np.ndarray</code></dt>
+<dd>The bounded decision variables.</dd>
+</dl></div>
+</dd>
+<dt id="megacon.ConEval"><code class="name flex">
+<span>def <span class="ident">ConEval</span></span>(<span>problem: Dict[str, Any], x: numpy.ndarray, *args: Any) ‑> Tuple[Dict[str, Any], numpy.ndarray, numpy.ndarray]</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Evaluates the constraints.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>problem</code></strong> :&ensp;<code>dict</code></dt>
+<dd>A dictionary containing problem-specific parameters and functions.</dd>
+<dt><strong><code>x</code></strong> :&ensp;<code>np.ndarray</code></dt>
+<dd>The decision variables.</dd>
+<dt><strong><code>*args</code></strong></dt>
+<dd>Additional arguments passed to the constraint function.</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<p>tuple:
+- dict: Updated problem dictionary with statistics.
+- np.ndarray: Inequality constraints.
+- np.ndarray: Equality constraints.</p></div>
+</dd>
+<dt id="megacon.GetOption"><code class="name flex">
+<span>def <span class="ident">GetOption</span></span>(<span>Option: str, Options: Dict[str, Any], DefaultOpt: Dict[str, Any]) ‑> Any</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Retrieves an option value from user-provided options or defaults.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>Option</code></strong> :&ensp;<code>str</code></dt>
+<dd>The option key.</dd>
+<dt><strong><code>Options</code></strong> :&ensp;<code>dict</code></dt>
+<dd>User-provided options.</dd>
+<dt><strong><code>DefaultOpt</code></strong> :&ensp;<code>dict</code></dt>
+<dd>Default options.</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>Any</code></dt>
+<dd>The option value.</dd>
+</dl></div>
+</dd>
+<dt id="megacon.InitPopulation"><code class="name flex">
+<span>def <span class="ident">InitPopulation</span></span>(<span>Problem: Dict[str, Any], InitialPopulation: List[Dict[str, Any]], Size: int, Conflag: int, CTol: float, CeqTol: float, NormType: Union[int, float], NormCons: int, *args: Any) ‑> Tuple[Dict[str, Any], Dict[str, numpy.ndarray]]</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Initializes the population.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>Problem</code></strong> :&ensp;<code>dict</code></dt>
+<dd>A dictionary containing problem-specific parameters and functions.</dd>
+<dt><strong><code>InitialPopulation</code></strong> :&ensp;<code>list</code></dt>
+<dd>List of dictionaries representing the initial population.</dd>
+<dt><strong><code>Size</code></strong> :&ensp;<code>int</code></dt>
+<dd>Population size.</dd>
+<dt><strong><code>Conflag</code></strong> :&ensp;<code>int</code></dt>
+<dd>Flag indicating if constraints are present.</dd>
+<dt><strong><code>CTol</code></strong> :&ensp;<code>float</code></dt>
+<dd>Constraint tolerance.</dd>
+<dt><strong><code>CeqTol</code></strong> :&ensp;<code>float</code></dt>
+<dd>Equality constraint tolerance.</dd>
+<dt><strong><code>NormType</code></strong> :&ensp;<code>int</code> or <code>float</code></dt>
+<dd>Norm type for constraint evaluation.</dd>
+<dt><strong><code>NormCons</code></strong> :&ensp;<code>int</code></dt>
+<dd>Flag indicating if normalization is applied.</dd>
+<dt><strong><code>*args</code></strong></dt>
+<dd>Additional arguments passed to the objective and constraint functions.</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<p>tuple:
+- dict: Updated problem dictionary with statistics.
+- dict: Initialized population.</p></div>
+</dd>
+<dt id="megacon.MEGAcon"><code class="name flex">
+<span>def <span class="ident">MEGAcon</span></span>(<span>Problem: Dict[str, Any], InitialPopulation: List[Dict[str, Any]], Options: Dict[str, Any], *args: Any) ‑> Tuple[numpy.ndarray, Dict[str, numpy.ndarray], Dict[str, Any]]</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Executes the MEGA optimization algorithm.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>Problem</code></strong> :&ensp;<code>dict</code></dt>
+<dd>A dictionary containing problem-specific parameters and functions.</dd>
+<dt><strong><code>InitialPopulation</code></strong> :&ensp;<code>list</code></dt>
+<dd>List of dictionaries representing the initial population.</dd>
+<dt><strong><code>Options</code></strong> :&ensp;<code>dict</code></dt>
+<dd>A dictionary containing options and parameters for the algorithm.</dd>
+<dt><strong><code>*args</code></strong></dt>
+<dd>Additional arguments passed to the objective and constraint functions.</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<p>tuple:
+- np.ndarray: The non-dominated points.
+- dict: A dictionary containing the front points.
+- dict: Run data statistics.</p></div>
+</dd>
+<dt id="megacon.ObjEval"><code class="name flex">
+<span>def <span class="ident">ObjEval</span></span>(<span>problem: Dict[str, Any], x: numpy.ndarray, *args: Any) ‑> Tuple[Dict[str, Any], numpy.ndarray]</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Evaluates the objective function.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>problem</code></strong> :&ensp;<code>dict</code></dt>
+<dd>A dictionary containing problem-specific parameters and functions.</dd>
+<dt><strong><code>x</code></strong> :&ensp;<code>np.ndarray</code></dt>
+<dd>The decision variables.</dd>
+<dt><strong><code>*args</code></strong></dt>
+<dd>Additional arguments passed to the objective function.</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<p>tuple:
+- dict: Updated problem dictionary with statistics.
+- np.ndarray: Objective function value.</p></div>
+</dd>
+<dt id="megacon.RankPopulation"><code class="name flex">
+<span>def <span class="ident">RankPopulation</span></span>(<span>Population: Dict[str, numpy.ndarray], elite: float, sigma: float, NormType: Union[int, float]) ‑> Dict[str, numpy.ndarray]</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Ranks the population based on non-domination and sharing.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>Population</code></strong> :&ensp;<code>dict</code></dt>
+<dd>The population to be ranked.</dd>
+<dt><strong><code>elite</code></strong> :&ensp;<code>float</code></dt>
+<dd>Elite fraction.</dd>
+<dt><strong><code>sigma</code></strong> :&ensp;<code>float</code></dt>
+<dd>Sharing parameter.</dd>
+<dt><strong><code>NormType</code></strong> :&ensp;<code>int</code> or <code>float</code></dt>
+<dd>Norm type for constraint evaluation.</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>dict</code></dt>
+<dd>Ranked population.</dd>
+</dl></div>
+</dd>
+<dt id="megacon.cnondom"><code class="name flex">
+<span>def <span class="ident">cnondom</span></span>(<span>P: numpy.ndarray, nv: int, F: numpy.ndarray, C: numpy.ndarray) ‑> numpy.ndarray</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Finds constrained non-dominated solutions.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>P</code></strong> :&ensp;<code>np.ndarray</code></dt>
+<dd>Population matrix.</dd>
+<dt><strong><code>nv</code></strong> :&ensp;<code>int</code></dt>
+<dd>Number of variables.</dd>
+<dt><strong><code>F</code></strong> :&ensp;<code>np.ndarray</code></dt>
+<dd>Feasibility array.</dd>
+<dt><strong><code>C</code></strong> :&ensp;<code>np.ndarray</code></dt>
+<dd>Constraint violation array.</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>np.ndarray</code></dt>
+<dd>Constrained non-dominated solutions.</dd>
+</dl></div>
+</dd>
+<dt id="megacon.dom"><code class="name flex">
+<span>def <span class="ident">dom</span></span>(<span>x: numpy.ndarray, y: numpy.ndarray) ‑> int</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Determines if one solution dominates another.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>x</code></strong> :&ensp;<code>np.ndarray</code></dt>
+<dd>Solution 1.</dd>
+<dt><strong><code>y</code></strong> :&ensp;<code>np.ndarray</code></dt>
+<dd>Solution 2.</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>int</code></dt>
+<dd>1 if x dominates y, 0 otherwise.</dd>
+</dl></div>
+</dd>
+<dt id="megacon.genetic_operator"><code class="name flex">
+<span>def <span class="ident">genetic_operator</span></span>(<span>Problem: Dict[str, Any], parent_chromosome: Dict[str, numpy.ndarray], pc: float, pm: float, mu: float, mum: float) ‑> Dict[str, numpy.ndarray]</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Applies genetic operators (crossover and mutation) to generate offspring.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>Problem</code></strong> :&ensp;<code>dict</code></dt>
+<dd>A dictionary containing problem-specific parameters and functions.</dd>
+<dt><strong><code>parent_chromosome</code></strong> :&ensp;<code>dict</code></dt>
+<dd>The parent chromosomes.</dd>
+<dt><strong><code>pc</code></strong> :&ensp;<code>float</code></dt>
+<dd>Crossover probability.</dd>
+<dt><strong><code>pm</code></strong> :&ensp;<code>float</code></dt>
+<dd>Mutation probability.</dd>
+<dt><strong><code>mu</code></strong> :&ensp;<code>float</code></dt>
+<dd>Distribution index for crossover.</dd>
+<dt><strong><code>mum</code></strong> :&ensp;<code>float</code></dt>
+<dd>Distribution index for mutation.</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>dict</code></dt>
+<dd>The offspring chromosomes.</dd>
+</dl></div>
+</dd>
+<dt id="megacon.nondom"><code class="name flex">
+<span>def <span class="ident">nondom</span></span>(<span>P: numpy.ndarray, nv: int) ‑> numpy.ndarray</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Finds non-dominated solutions.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>P</code></strong> :&ensp;<code>np.ndarray</code></dt>
+<dd>Population matrix.</dd>
+<dt><strong><code>nv</code></strong> :&ensp;<code>int</code></dt>
+<dd>Number of variables.</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>np.ndarray</code></dt>
+<dd>Non-dominated solutions.</dd>
+</dl></div>
+</dd>
+<dt id="megacon.share"><code class="name flex">
+<span>def <span class="ident">share</span></span>(<span>dist: float, sigma: float) ‑> float</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Calculates the sharing value based on distance and sigma.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>dist</code></strong> :&ensp;<code>float</code></dt>
+<dd>The distance.</dd>
+<dt><strong><code>sigma</code></strong> :&ensp;<code>float</code></dt>
+<dd>The sharing parameter.</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>float</code></dt>
+<dd>Sharing value.</dd>
+</dl></div>
+</dd>
+<dt id="megacon.tournament_selection"><code class="name flex">
+<span>def <span class="ident">tournament_selection</span></span>(<span>chromosomes: Dict[str, numpy.ndarray], pool_size: int, tour_size: int) ‑> Dict[str, numpy.ndarray]</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Performs tournament selection.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>chromosomes</code></strong> :&ensp;<code>dict</code></dt>
+<dd>The current population of chromosomes.</dd>
+<dt><strong><code>pool_size</code></strong> :&ensp;<code>int</code></dt>
+<dd>The size of the selection pool.</dd>
+<dt><strong><code>tour_size</code></strong> :&ensp;<code>int</code></dt>
+<dd>The size of the tournament.</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>dict</code></dt>
+<dd>Selected parent chromosomes.</dd>
+</dl></div>
+</dd>
+</dl>
+</section>
+<section>
+</section>
+</article>
+<nav id="sidebar">
+<div class="toc">
+<ul></ul>
+</div>
+<ul id="index">
+<li><h3><a href="#header-functions">Functions</a></h3>
+<ul class="">
+<li><code><a title="megacon.Bounds" href="#megacon.Bounds">Bounds</a></code></li>
+<li><code><a title="megacon.ConEval" href="#megacon.ConEval">ConEval</a></code></li>
+<li><code><a title="megacon.GetOption" href="#megacon.GetOption">GetOption</a></code></li>
+<li><code><a title="megacon.InitPopulation" href="#megacon.InitPopulation">InitPopulation</a></code></li>
+<li><code><a title="megacon.MEGAcon" href="#megacon.MEGAcon">MEGAcon</a></code></li>
+<li><code><a title="megacon.ObjEval" href="#megacon.ObjEval">ObjEval</a></code></li>
+<li><code><a title="megacon.RankPopulation" href="#megacon.RankPopulation">RankPopulation</a></code></li>
+<li><code><a title="megacon.cnondom" href="#megacon.cnondom">cnondom</a></code></li>
+<li><code><a title="megacon.dom" href="#megacon.dom">dom</a></code></li>
+<li><code><a title="megacon.genetic_operator" href="#megacon.genetic_operator">genetic_operator</a></code></li>
+<li><code><a title="megacon.nondom" href="#megacon.nondom">nondom</a></code></li>
+<li><code><a title="megacon.share" href="#megacon.share">share</a></code></li>
+<li><code><a title="megacon.tournament_selection" href="#megacon.tournament_selection">tournament_selection</a></code></li>
+</ul>
+</li>
+</ul>
+</nav>
+</main>
+<footer id="footer">
+<p>Generated by <a href="https://pdoc3.github.io/pdoc" title="pdoc: Python API documentation generator"><cite>pdoc</cite> 0.11.1</a>.</p>
+</footer>
+</body>
+</html>
