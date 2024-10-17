@@ -44,8 +44,8 @@ With the virtual environment activated, install all necessary libraries specifie
 
 `pip install -r requirements.txt`
 
-### Step 5: Run the Project
-Finally, run the project using the following command:
+### Step 5: Run the Example File
+Finally, run the example file using the following command:
 
 `python megacon_run.py`
 
