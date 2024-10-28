@@ -2,3 +2,7 @@ matplotlib == 3.9.0
 numpy == 1.26.4
 typing-extensions>=4.0.0
 unittest2>=1.1.0
+jupyter>=1.0.0
+notebook>=6.4.0
+ipykernel>=6.0.0
+ipywidgets>=7.0.0  # For interactive widgets in notebooks
