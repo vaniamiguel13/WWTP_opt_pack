@@ -1,2 +1,4 @@
 matplotlib == 3.9.0
 numpy == 1.26.4
+typing-extensions>=4.0.0
+unittest2>=1.1.0
