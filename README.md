@@ -77,3 +77,5 @@ If you use this package in your research, please cite:
 Miguel, V. (2024). Development of a python package to optimize wastewater treatment plants. 
 Master's Dissertation, University of Minho, School of Engineering.
 ```
+## License & copyright
+[![DOI](https://doi.org/10.5281/zenodo.14763042.svg)]
